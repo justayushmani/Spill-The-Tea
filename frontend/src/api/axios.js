@@ -1,9 +1,24 @@
 import axios from "axios";
 
 // Use REACT_APP_ prefix for Create React App environment variables
-// Fallback to localhost for development if not set
+// Auto-detect production vs development
+const getBaseURL = () => {
+  // If explicitly set via environment variable, use it
+  if (process.env.REACT_APP_API_URL) {
+    return process.env.REACT_APP_API_URL;
+  }
+  
+  // Auto-detect production (running on Render)
+  if (window.location.hostname.includes('onrender.com')) {
+    return "https://spill-the-tea.onrender.com/api";
+  }
+  
+  // Default to localhost for local development
+  return "http://localhost:5000/api";
+};
+
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+  baseURL: getBaseURL(),
   withCredentials: true,
 });
 
