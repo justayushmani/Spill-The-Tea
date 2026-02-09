@@ -7,7 +7,7 @@ const Wall = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    api.get("/trauma").then(res => setPosts(res.data));
+    api.get("/api/trauma").then(res => setPosts(res.data));
     
     const colors = ['#FF6B35', '#FF0054', '#FFD166', '#06D6A0', '#118AB2'];
     document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
