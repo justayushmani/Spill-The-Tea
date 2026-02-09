@@ -6,7 +6,7 @@ const UpvoteButton = ({ postId, initialUpvotes }) => {
 
   const handleUpvote = async () => {
     try {
-      const res = await api.post(`/api/trauma/${postId}/upvote`);
+      const res = await api.post(`/trauma/${postId}/upvote`);
       setUpvotes(res.data.upvotes);
     } catch (err) {
       alert(err.response?.data?.msg || "Login to upvote");

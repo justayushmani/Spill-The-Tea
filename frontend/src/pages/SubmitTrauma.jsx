@@ -8,7 +8,7 @@ const SubmitTrauma = () => {
 
   const submit = async () => {
     if (!content.trim()) return;
-    await api.post("/api/trauma", { content });
+    await api.post("/trauma", { content });
     alert("Trauma submitted for approval");
     setContent("");
     navigate("/");

@@ -1,7 +1,7 @@
 import { User } from '../models/User.js';
 import jwt from 'jsonwebtoken';
 
-// 🔑 Generate JWT
+
 const generateToken = (user) => {
   return jwt.sign(
     { id: user._id, role: user.role },
@@ -10,7 +10,7 @@ const generateToken = (user) => {
   );
 };
 
-// 📝 Register
+
 export const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -42,7 +42,7 @@ export const registerUser = async (req, res) => {
   });
 };
 
-// 🔓 Login
+
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -64,7 +64,6 @@ export const loginUser = async (req, res) => {
   });
 };
 
-// 👤 Get logged-in user
 export const getMe = async (req, res) => {
   const user = await User.findById(req.user._id).select('-password');
   res.json(user);

@@ -5,11 +5,11 @@ const ModeratorPanel = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    api.get("/api/trauma/pending").then(res => setPosts(res.data));
+    api.get("/trauma/pending").then(res => setPosts(res.data));
   }, []);
 
   const approve = async (id) => {
-    await api.patch(`/api/trauma/approve/${id}`);
+    await api.patch(`/trauma/approve/${id}`);
     setPosts(posts.filter(p => p._id !== id));
   };
 
