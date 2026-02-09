@@ -14,12 +14,25 @@ const app = express();
 /* ---------- MIDDLEWARE ---------- */
 app.use(express.json());
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://spill-the-tea-1.onrender.com"
+];
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "*",
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // for Postman
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
+
 
 /* ---------- ROUTES ---------- */
 app.use("/api/auth", authRoutes);
