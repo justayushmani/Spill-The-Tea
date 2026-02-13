@@ -31,6 +31,11 @@ app.use(
         return callback(null, true);
       }
       
+      // Allow Render frontend URLs (with or without trailing slash)
+      if (origin.includes('spill-the-tea-1.onrender.com')) {
+        return callback(null, true);
+      }
+      
       // Check allowed origins for production
       if (allowedOrigins.includes(origin)) {
         callback(null, true);
