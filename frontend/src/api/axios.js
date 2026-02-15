@@ -1,9 +1,8 @@
 import axios from "axios";
 
-// Use REACT_APP_ prefix for Create React App environment variables
-// Auto-detect production vs development at runtime
+
 const getBaseURL = () => {
-  // If explicitly set via environment variable, use it (set in Render dashboard)
+  
   if (process.env.REACT_APP_API_URL) {
     return process.env.REACT_APP_API_URL;
   }
@@ -22,7 +21,6 @@ const api = axios.create({
   withCredentials: true,
 });
 
-// Log the base URL being used (helpful for debugging)
 if (typeof window !== "undefined") {
   console.log("API Base URL:", api.defaults.baseURL);
 }
