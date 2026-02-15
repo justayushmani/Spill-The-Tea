@@ -1,13 +1,12 @@
 import { User } from '../models/User.js';
 import { TraumaPost } from '../models/TraumaPost.js';
 
-// Get all users
+
 export const getAllUsers = async (req, res) => {
   const users = await User.find().select('-password');
   res.json(users);
 };
 
-// Promote user to moderator
 export const promoteToModerator = async (req, res) => {
   const user = await User.findById(req.params.id);
 

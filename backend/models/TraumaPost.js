@@ -23,13 +23,13 @@ const TraumaPostSchema = new mongoose.Schema(
       default: []
     },
 
-    // Total upvote count (fast read)
+  
     upvotes: {
       type: Number,
       default: 0
     },
 
-    // To prevent multiple upvotes by same user
+  
     upvotedBy: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -37,7 +37,7 @@ const TraumaPostSchema = new mongoose.Schema(
       }
     ],
 
-    // Stored only for moderation, never shown on UI
+   
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
